@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/28/SHCTF/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/28/SHCTF-wp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -164,7 +164,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2026/03/28/SHCTF/" class="post-title-link" itemprop="url">SHCTF</a>
+            <a href="/2026/03/28/SHCTF-wp/" class="post-title-link" itemprop="url">SHCTF wp</a>
         </h2>
 
         <div class="post-meta">
@@ -175,16 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2026-03-28 18:30:00 / Modified: 17:44:00" itemprop="dateCreated datePublished" datetime="2026-03-28T18:30:00+08:00">2026-03-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%94%E8%B5%9B%E5%A4%8D%E7%8E%B0/" itemprop="url" rel="index"><span itemprop="name">比赛复现</span></a>
-                </span>
+              <time title="Created: 2026-03-28 17:45:54 / Modified: 17:49:43" itemprop="dateCreated datePublished" datetime="2026-03-28T17:45:54+08:00">2026-03-28</time>
             </span>
 
           
@@ -243,7 +234,10 @@ e 是一个 1019 位的素数。
 <ol>
 <li>计算连分数</li>
 </ol>
-<p>我们将 ne 展开为连分数，并计算其每一级的渐近分数（Convergents） dk。<br>2. 验证私钥</p>
+<p>我们将 ne 展开为连分数，并计算其每一级的渐近分数（Convergents） dk。</p>
+<ol start="2">
+<li>验证私钥</li>
+</ol>
 <p>对于每一个可能的 dk：</p>
 <pre><code>取分母作为可能的 d。
 
@@ -265,7 +259,7 @@ e 是一个 1019 位的素数。
 <p>发现flag关键字中间内容base64解码1_8_74_20_7_92_16_5_18_8_7，题目中提示(在学化学)对应元素周期表元素得到flag(注意大写)</p>
 <p>SHCTF{H_O_W_CA_N_U_S_B_AR_O_N}</p>
 <h3 id="Office"><a href="#Office" class="headerlink" title="Office"></a><strong>Office</strong></h3><ol>
-<li><h2 id="）确认题型：docx-zip-容器"><a href="#）确认题型：docx-zip-容器" class="headerlink" title="）确认题型：docx &#x3D; zip 容器"></a>）确认题型：docx &#x3D; zip 容器</h2><p>  <strong>操作</strong></p>
+<li><h2 id="）确认题型：docx-zip-容器"><a href="#）确认题型：docx-zip-容器" class="headerlink" title="）确认题型：docx &#x3D; zip 容器"></a>）确认题型：docx &#x3D; zip 容器</h2><p> <strong>操作</strong></p>
 <ul>
 <li>你先用工具&#x2F;扫描信息确认：<code>flag.docx</code> 文件头是 <code>50 4B 03 04</code>（ZIP 的文件头），与 docx 匹配。</li>
 </ul>
@@ -308,6 +302,7 @@ e 是一个 1019 位的素数。
 <li>你抽到的内容只有一串：</li>
 </ul>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lRy1m2qYkmewkTqDrneCoTCQoUiFqm7zqoeRoT7DqDCAqm7QsTqRuT3PqjWUt5e7</span><br></pre></td></tr></table></figure>
+
 <p>  <strong>原理</strong></p>
 <ul>
 <li>Word 正文文本会落在 <code>w:t</code> 标签里。</li>
@@ -321,25 +316,25 @@ e 是一个 1019 位的素数。
 <p>  <code>+/0-6a-zA-Z7-9=</code><br>   并且长度是 15（说明它是“规则表达式”，不是 64 个字符本体）</p>
 <p>  <strong>原理</strong></p>
 <ul>
-<li>这串看起来像正则&#x2F;范围表达式，意思是把字符按顺序拼起来：<ul>
+<li>这串看起来像正则&#x2F;范围表达式，意思是把字符按顺序拼起来：</li>
 <li><code>+/</code></li>
 <li><code>0-6</code></li>
 <li><code>a-z</code></li>
 <li><code>A-Z</code></li>
 <li><code>7-9</code></li>
 <li><code>=</code>（padding）</li>
-</ul>
-</li>
 <li>这正是 <strong>Base64 字符表（alphabet）</strong> 的定义方式，只是顺序不是标准的。</li>
 </ul>
 <p>  展开后真正的 64 字符表是：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+/0123456abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ789</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h2 id="6）把“自定义-Base64”映射回“标准-Base64”，再解码"><a href="#6）把“自定义-Base64”映射回“标准-Base64”，再解码" class="headerlink" title="6）把“自定义 Base64”映射回“标准 Base64”，再解码"></a>6）把“自定义 Base64”映射回“标准 Base64”，再解码</h2><p>  <strong>操作</strong></p>
 <ul>
 <li>标准 Base64 alphabet 是：</li>
 </ul>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>将密文中的每个字符：</p>
 <ol>
@@ -618,8 +613,9 @@ e 是一个 1019 位的素数。
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2026-03-28 16:19:09" itemprop="dateCreated datePublished" datetime="2026-03-28T16:19:09+08:00">2026-03-28</time>
+              <time title="Created: 2026-03-28 16:19:09 / Modified: 17:49:05" itemprop="dateCreated datePublished" datetime="2026-03-28T16:19:09+08:00">2026-03-28</time>
             </span>
 
           
@@ -787,14 +783,6 @@ e 是一个 1019 位的素数。
           <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">categories</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
